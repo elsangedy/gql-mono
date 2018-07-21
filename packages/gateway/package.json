@@ -1,0 +1,29 @@
+{
+  "name": "gql-mono-gateway",
+  "description": "gql-mono-gateway",
+  "license": "MIT",
+  "version": "0.0.1",
+  "keywords": [
+    "graphql",
+    "monorepo",
+    "typescript",
+    "lerna",
+    "nodejs"
+  ],
+  "author": "Munir Ahmed Elsangedy <elsangedy@gmail.com>",
+  "scripts": {
+    "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
+  },
+  "dependencies": {
+    "apollo-link-http": "^1.5.4",
+    "graphql-tools": "^3.0.5",
+    "graphql-yoga": "^1.14.12",
+    "node-fetch": "^2.1.2"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  }
+}

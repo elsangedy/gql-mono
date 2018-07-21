@@ -1,0 +1,26 @@
+{
+  "name": "gql-mono-post",
+  "description": "gql-mono-post",
+  "license": "MIT",
+  "version": "0.0.1",
+  "keywords": [
+    "graphql",
+    "monorepo",
+    "typescript",
+    "lerna",
+    "nodejs"
+  ],
+  "author": "Munir Ahmed Elsangedy <elsangedy@gmail.com>",
+  "scripts": {
+    "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.14.12"
+  },
+  "devDependencies": {
+    "dotenv": "^6.0.0",
+    "nodemon": "^1.18.3",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  }
+}
