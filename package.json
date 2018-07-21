@@ -16,7 +16,7 @@
     "clean": "lerna clean",
     "dev": "lerna run dev --parallel --concurrent",
     "docs:dev": "cd ./docs && yarn dev",
-    "docs:build": "cd ./docs && yarn build",
+    "docs:build": "cd ./docs && yarn install && yarn build",
     "format": "pretty-quick --staged",
     "precommit": "yarn format"
   },
