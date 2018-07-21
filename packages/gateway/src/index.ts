@@ -15,16 +15,62 @@ const getIntrospectSchema = async uri => {
   }
 };
 
-const uris = [
-  'http://localhost:4001/graphql', // post
-  'http://localhost:4002/graphql' // author
-];
-
 const server = async () => {
-  const schemas = await Promise.all(uris.map(getIntrospectSchema));
+  const postSchema = await getIntrospectSchema('http://localhost:4001/graphql');
+  const authorSchema = await getIntrospectSchema('http://localhost:4002/graphql');
+
+  const linkTypeDef = `
+    extend type Author {
+      posts: [Post!]!
+    }
+
+    extend type Post {
+      author: Author!
+    }
+  `;
+
+  const schemas = [postSchema, authorSchema, linkTypeDef];
+
+  const resolvers = {
+    Author: {
+      posts: {
+        fragment: `... on Author { id }`,
+        resolve(author, _, context, info) {
+          return info.mergeInfo.delegateToSchema({
+            schema: postSchema,
+            operation: 'query',
+            fieldName: 'postsByAuthor',
+            args: {
+              author_id: author.id
+            },
+            context,
+            info
+          });
+        }
+      }
+    },
+    Post: {
+      author: {
+        fragment: `... on Post { author_id }`,
+        resolve(post, _, context, info) {
+          return info.mergeInfo.delegateToSchema({
+            schema: authorSchema,
+            operation: 'query',
+            fieldName: 'author',
+            args: {
+              id: post.author_id
+            },
+            context,
+            info
+          });
+        }
+      }
+    }
+  };
 
   const schema = mergeSchemas({
-    schemas
+    schemas,
+    resolvers
   });
 
   const server = new GraphQLServer({

@@ -1,0 +1,7 @@
+extend type Author {
+  posts: [Post!]!
+}
+
+extend type Post {
+  author: Author!
+}
