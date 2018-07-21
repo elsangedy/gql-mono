@@ -1,6 +1,6 @@
 # gql-mono
 
-GraphQL monorepo Docs
+GQL Mono Docs use [Docz](https://github.com/pedronauck/docz)
 
 ## Run
 
