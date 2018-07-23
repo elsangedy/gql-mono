@@ -11,3 +11,9 @@ $ yarn install
 $ yarn bootstrap
 $ yarn dev
 ```
+
+## Run Docs
+
+```bash
+$ yarn docs:dev
+```
