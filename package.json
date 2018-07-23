@@ -14,8 +14,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "clean": "lerna clean",
+    "ls": "lerna ls",
     "dev": "lerna run dev --parallel --concurrent",
-    "lint": "tslint './**/*.ts'",
     "format": "pretty-quick --staged",
     "precommit": "yarn format"
   },

@@ -1,8 +1,8 @@
 {
-  "name": "gql-mono-auth",
+  "name": "@gql-mono/auth",
   "description": "gql-mono-auth",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "keywords": [
     "graphql",
     "monorepo",
@@ -15,8 +15,8 @@
     "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
   },
   "dependencies": {
+    "@gql-mono/utils": "^0.0.1",
     "bcryptjs": "^2.4.3",
-    "gql-mono-utils": "lastest",
     "graphql-yoga": "^1.14.12",
     "jsonwebtoken": "^8.3.0"
   },

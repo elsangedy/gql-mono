@@ -1,23 +1,34 @@
 import fetch from 'node-fetch';
 import { HttpLink } from 'apollo-link-http';
-import { GraphQLServer } from 'graphql-yoga';
-import { mergeSchemas, makeRemoteExecutableSchema, introspectSchema } from 'graphql-tools';
+import { setContext } from 'apollo-link-context';
+import { GraphQLServer, Options } from 'graphql-yoga';
+import { makeRemoteExecutableSchema, introspectSchema, mergeSchemas } from 'graphql-tools';
+
+import recursive from '@gql-mono/utils/src/recursive';
 
 const getIntrospectSchema = async uri => {
-  try {
-    const link = new HttpLink({ uri, fetch });
+  const http = new HttpLink({ uri, fetch });
 
-    const schema = await introspectSchema(link);
+  const link = setContext((_, previousContext) => {
+    const headers =
+      previousContext && previousContext.graphqlContext && previousContext.graphqlContext.request
+        ? previousContext.graphqlContext.request.headers
+        : {};
 
-    return makeRemoteExecutableSchema({ schema, link });
-  } catch (e) {
-    console.log(`[ERROR]: ${e.message}`, e);
-  }
+    return {
+      headers
+    };
+  }).concat(http);
+
+  const schema = await recursive(() => introspectSchema(link));
+
+  return makeRemoteExecutableSchema({ schema, link });
 };
 
 const server = async () => {
-  const postSchema = await getIntrospectSchema('http://localhost:4001/graphql');
-  const authorSchema = await getIntrospectSchema('http://localhost:4002/graphql');
+  const postSchema = await getIntrospectSchema('http://localhost:4001');
+  const authorSchema = await getIntrospectSchema('http://localhost:4002');
+  const authSchema = await getIntrospectSchema('http://localhost:4003');
 
   const linkTypeDef = `
     extend type Author {
@@ -29,7 +40,7 @@ const server = async () => {
     }
   `;
 
-  const schemas = [postSchema, authorSchema, linkTypeDef];
+  const schemas = [postSchema, authorSchema, authSchema, linkTypeDef];
 
   const resolvers = {
     Author: {
@@ -74,20 +85,15 @@ const server = async () => {
   });
 
   const server = new GraphQLServer({
-    schema
+    schema,
+    context: req => ({ ...req })
   });
 
   const options = {
-    port: process.env.GATEWAY_PORT,
-    endpoint: process.env.GATEWAY_ENDPOINT
+    port: process.env.GATEWAY_PORT
   };
 
-  const onListening = ({ port }) =>
-    console.log(`
-    ✅ Server is running on:
-    - http://localhost:${port}
-    - http://localhost:${port}/graphql
-  `);
+  const onListening = ({ port }: Options) => console.log(`✅ Server is running on: http://localhost:${port}`);
 
   server.start(options, onListening);
 };

@@ -1,8 +1,8 @@
 {
-  "name": "gql-mono-utils",
+  "name": "@gql-mono/utils",
   "description": "gql-mono-utils",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "keywords": [
     "graphql",
     "monorepo",

@@ -1,8 +1,8 @@
 {
-  "name": "gql-mono-gateway",
+  "name": "@gql-mono/gateway",
   "description": "gql-mono-gateway",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "keywords": [
     "graphql",
     "monorepo",
@@ -15,10 +15,11 @@
     "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
   },
   "dependencies": {
+    "@gql-mono/utils": "^0.0.1",
+    "apollo-link-context": "^1.0.8",
     "apollo-link-http": "^1.5.4",
     "graphql-tools": "^3.0.5",
-    "graphql-yoga": "^1.14.12",
-    "node-fetch": "^2.1.2"
+    "graphql-yoga": "^1.14.12"
   },
   "devDependencies": {
     "dotenv": "^6.0.0",
