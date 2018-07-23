@@ -1,6 +1,6 @@
 {
-  "name": "@gql-mono/post",
-  "description": "gql-mono-post",
+  "name": "@gql-mono/auth",
+  "description": "gql-mono-auth",
   "license": "MIT",
   "version": "0.0.1",
   "keywords": [
@@ -15,7 +15,10 @@
     "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
   },
   "dependencies": {
-    "graphql-yoga": "^1.14.12"
+    "@gql-mono/utils": "^0.0.1",
+    "bcryptjs": "^2.4.3",
+    "graphql-yoga": "^1.14.12",
+    "jsonwebtoken": "^8.3.0"
   },
   "devDependencies": {
     "dotenv": "^6.0.0",

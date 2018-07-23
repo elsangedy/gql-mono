@@ -127,6 +127,12 @@ apollo-cache-control@^0.1.0:
   dependencies:
     graphql-extensions "^0.0.x"
 
+apollo-link-context@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/apollo-link-context/-/apollo-link-context-1.0.8.tgz#c967a56ac6ed32add748937735bcb57c5cc64c95"
+  dependencies:
+    apollo-link "^1.2.2"
+
 apollo-link-http-common@^0.2.4:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/apollo-link-http-common/-/apollo-link-http-common-0.2.4.tgz#877603f7904dc8f70242cac61808b1f8d034b2c3"
@@ -1526,10 +1532,6 @@ node-fetch@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.0.0.tgz#982bba43ecd4f2922a29cc186a6bbb0bb73fcba6"
 
-node-fetch@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
-
 node-pre-gyp@^0.10.0:
   version "0.10.3"
   resolved "https://registry.yarnpkg.com/node-pre-gyp/-/node-pre-gyp-0.10.3.tgz#3070040716afdc778747b61b6887bf78880b80fc"
@@ -2131,8 +2133,8 @@ strip-json-comments@~2.0.1:
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
 
 subscriptions-transport-ws@^0.9.8:
-  version "0.9.12"
-  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.12.tgz#0deb945134890d8694a93a090bacc6459c4478cc"
+  version "0.9.13"
+  resolved "https://registry.yarnpkg.com/subscriptions-transport-ws/-/subscriptions-transport-ws-0.9.13.tgz#3c09b8ad0c1492c902fca57186bbff48c393b0bf"
   dependencies:
     backo2 "^1.0.2"
     eventemitter3 "^3.1.0"
@@ -2398,5 +2400,5 @@ zen-observable-ts@^0.8.9:
     zen-observable "^0.8.0"
 
 zen-observable@^0.8.0:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.8.tgz#1ea93995bf098754a58215a1e0a7309e5749ec42"
+  version "0.8.9"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.9.tgz#0475c760ff0eda046bbdfa4dc3f95d392807ac53"
