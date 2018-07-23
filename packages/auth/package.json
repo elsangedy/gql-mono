@@ -1,6 +1,6 @@
 {
-  "name": "gql-mono-gateway",
-  "description": "gql-mono-gateway",
+  "name": "gql-mono-auth",
+  "description": "gql-mono-auth",
   "license": "MIT",
   "version": "0.0.2",
   "keywords": [
@@ -15,10 +15,10 @@
     "dev": "nodemon --watch src/**/*.ts -r dotenv/config --exec ts-node src/index.ts"
   },
   "dependencies": {
-    "apollo-link-http": "^1.5.4",
-    "graphql-tools": "^3.0.5",
+    "bcryptjs": "^2.4.3",
+    "gql-mono-utils": "lastest",
     "graphql-yoga": "^1.14.12",
-    "node-fetch": "^2.1.2"
+    "jsonwebtoken": "^8.3.0"
   },
   "devDependencies": {
     "dotenv": "^6.0.0",
